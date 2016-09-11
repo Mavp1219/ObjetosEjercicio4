@@ -9,6 +9,9 @@ package interfaz;
  *
  * @author user
  */
+import clases.Password;
+import javax.swing.JOptionPane;
+
 public class principal extends javax.swing.JFrame {
 
     /**
@@ -27,21 +30,136 @@ public class principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtlongitud = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtcontraseña = new javax.swing.JTextField();
+        cmdseguridad = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        cmdmostrar = new javax.swing.JButton();
+        txtseguridad = new javax.swing.JTextField();
+        txtmostrar = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("CARACTER CONTRASEÑA ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 190, 30));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Longuitud: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 64, 80, 20));
+        jPanel1.add(txtlongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 100, 30));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Digite Su Contraseña: ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 114, 150, 30));
+        jPanel1.add(txtcontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 140, 30));
+
+        cmdseguridad.setText("Segutidad");
+        cmdseguridad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdseguridadActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdseguridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 173, 80, 30));
+
+        jButton2.setText("Modificar");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 80, 30));
+
+        cmdmostrar.setText("Mostrar");
+        cmdmostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdmostrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 80, 30));
+        jPanel1.add(txtseguridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 160, 30));
+        jPanel1.add(txtmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 230, 30));
+
+        jButton4.setText("Limpiar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 283, 90, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdmostrarActionPerformed
+        Password password2;
+        int longitud = 8;
+        String contraseña;
+        contraseña = txtcontraseña.getText();
+        password2 = new Password(longitud, contraseña);
+        longitud = Integer.parseInt(txtlongitud.getText());
+        password2.setLongitud(longitud);
+        if (txtcontraseña.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Contraseña vacia por favor llenarla", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtcontraseña.requestFocusInWindow();
+        } else if (longitud != contraseña.length()) {
+            JOptionPane.showMessageDialog(this, "La longitud de su contraseña y su contraseña no coinciden", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtlongitud.setText("");
+            txtcontraseña.setText("");
+            txtlongitud.requestFocusInWindow();
+        } else {
+            txtmostrar.setText("Su contraseña es: " + password2.getContraseña());
+        }
+
+    }//GEN-LAST:event_cmdmostrarActionPerformed
+
+    private void cmdseguridadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdseguridadActionPerformed
+        try {
+            Password password2;
+            int longitud = 8;
+            String contraseña;
+            String ress;
+            contraseña = txtcontraseña.getText();
+            password2 = new Password(longitud, contraseña);
+            longitud = Integer.parseInt(txtlongitud.getText());
+            password2.setLongitud(longitud);
+            ress = password2.CaracterContraseña();
+            if (txtcontraseña.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Contraseña Vacia llenarla por favor", "Error", JOptionPane.ERROR_MESSAGE);
+                txtcontraseña.requestFocusInWindow();
+            } else if (longitud != contraseña.length()) {
+                JOptionPane.showMessageDialog(this, "La longitud de su contraseña y su contraseña no coinciden", "Erro", JOptionPane.ERROR_MESSAGE);
+                txtlongitud.setText("");
+                txtcontraseña.setText("");
+                txtlongitud.requestFocusInWindow();
+            } else {
+                txtseguridad.setText(ress);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Contraseña incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
+            txtlongitud.setText("");
+            txtcontraseña.setText("");
+            txtmostrar.setText("");
+            txtseguridad.setText("");
+            txtlongitud.requestFocusInWindow();
+        }
+
+    }//GEN-LAST:event_cmdseguridadActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+            txtlongitud.setText("");
+            txtcontraseña.setText("");
+            txtmostrar.setText("");
+            txtseguridad.setText("");
+            txtlongitud.requestFocusInWindow();
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +197,17 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdmostrar;
+    private javax.swing.JButton cmdseguridad;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtcontraseña;
+    private javax.swing.JTextField txtlongitud;
+    private javax.swing.JTextField txtmostrar;
+    private javax.swing.JTextField txtseguridad;
     // End of variables declaration//GEN-END:variables
 }

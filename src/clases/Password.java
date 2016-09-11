@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package clases;
-
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author user
@@ -37,12 +34,16 @@ public class Password {
         return contraseña;
     }
 
-    public boolean EsFuerte() {
-        boolean acces = true;
-        if (this.longitud < 6) {
-            acces = false;
-        }
-        return acces;
+ public String CaracterContraseña(){
+    String acces;
+    if (longitud >= 6){
+        acces = "Es de caracter fuerte";
+    }else{
+        acces = "Es de caracter debil";
     }
+    return acces;
+
+ }
+
 
 }
