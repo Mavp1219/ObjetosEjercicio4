@@ -19,6 +19,7 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
+        txtlongitud.setText("8");
     }
 
     /**
@@ -35,13 +36,14 @@ public class principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtlongitud = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtcontraseña = new javax.swing.JTextField();
         cmdseguridad = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cmdmodificar = new javax.swing.JButton();
         cmdmostrar = new javax.swing.JButton();
         txtseguridad = new javax.swing.JTextField();
         txtmostrar = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        cmdlimpiar = new javax.swing.JButton();
+        txtcontraseña = new javax.swing.JPasswordField();
+        cmdeditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -54,13 +56,12 @@ public class principal extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Longuitud: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 64, 80, 20));
-        jPanel1.add(txtlongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 100, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 80, 20));
+        jPanel1.add(txtlongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 60, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Digite Su Contraseña: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 114, 150, 30));
-        jPanel1.add(txtcontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 140, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 150, 30));
 
         cmdseguridad.setText("Segutidad");
         cmdseguridad.addActionListener(new java.awt.event.ActionListener() {
@@ -68,10 +69,15 @@ public class principal extends javax.swing.JFrame {
                 cmdseguridadActionPerformed(evt);
             }
         });
-        jPanel1.add(cmdseguridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 173, 80, 30));
+        jPanel1.add(cmdseguridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 90, 40));
 
-        jButton2.setText("Modificar");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 80, 30));
+        cmdmodificar.setText("Cambiar Contraseña");
+        cmdmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdmodificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdmodificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 140, 40));
 
         cmdmostrar.setText("Mostrar");
         cmdmostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,17 +85,30 @@ public class principal extends javax.swing.JFrame {
                 cmdmostrarActionPerformed(evt);
             }
         });
-        jPanel1.add(cmdmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 80, 30));
-        jPanel1.add(txtseguridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 160, 30));
-        jPanel1.add(txtmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 230, 30));
+        jPanel1.add(cmdmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 90, 40));
 
-        jButton4.setText("Limpiar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        txtseguridad.setEditable(false);
+        jPanel1.add(txtseguridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 240, 40));
+
+        txtmostrar.setEditable(false);
+        jPanel1.add(txtmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 240, 40));
+
+        cmdlimpiar.setText("Limpiar");
+        cmdlimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                cmdlimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 283, 90, 30));
+        jPanel1.add(cmdlimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 283, 90, 30));
+        jPanel1.add(txtcontraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 150, 30));
+
+        cmdeditar.setText("Editar");
+        cmdeditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdeditarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdeditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 80, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 320));
 
@@ -151,15 +170,54 @@ public class principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cmdseguridadActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-            txtlongitud.setText("");
-            txtcontraseña.setText("");
-            txtmostrar.setText("");
-            txtseguridad.setText("");
-            txtlongitud.requestFocusInWindow();
+    private void cmdlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdlimpiarActionPerformed
+        txtlongitud.setEditable(true);
+        txtcontraseña.setText("");
+        txtlongitud.setText("8");
+        txtlongitud.selectAll();
+        txtlongitud.requestFocusInWindow();
+        txtmostrar.setText("");
+        txtseguridad.setText("");
+
+
+    }//GEN-LAST:event_cmdlimpiarActionPerformed
+
+    private void cmdmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdmodificarActionPerformed
+        txtlongitud.setEditable(false);
+        cmdeditar.setEnabled(true);
+        txtcontraseña.requestFocusInWindow();
+        txtcontraseña.setText("");
+        txtcontraseña.requestFocusInWindow();
+        cmdmostrar.setEnabled(false);
+        cmdmodificar.setEnabled(false);
+        cmdseguridad.setEnabled(false);
+        
+    }//GEN-LAST:event_cmdmodificarActionPerformed
+
+    private void cmdeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdeditarActionPerformed
+        
+        Password password2;
+        int longitud = Integer.parseInt(txtlongitud.getText());
+        String contraseña;
+        contraseña = txtcontraseña.getText();
+        password2 = new Password(longitud, contraseña);
+        contraseña = txtcontraseña.getText();
+        password2.setContraseña(contraseña);
+        int select = JOptionPane.showConfirmDialog(this, "Desea cambiar su contraseña?", "Informacion", JOptionPane.YES_NO_OPTION);
+        if(select == 0){
+        cmdmostrar.setEnabled(true);
+        cmdmodificar.setEnabled(true);
+        cmdseguridad.setEnabled(true);
+        cmdeditar.setEnabled(false);
+        }else {
+            JOptionPane.showMessageDialog(this, "Contraseña no cambiada");
+        }
         
         
-    }//GEN-LAST:event_jButton4ActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_cmdeditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,15 +255,16 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdeditar;
+    private javax.swing.JButton cmdlimpiar;
+    private javax.swing.JButton cmdmodificar;
     private javax.swing.JButton cmdmostrar;
     private javax.swing.JButton cmdseguridad;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtcontraseña;
+    private javax.swing.JPasswordField txtcontraseña;
     private javax.swing.JTextField txtlongitud;
     private javax.swing.JTextField txtmostrar;
     private javax.swing.JTextField txtseguridad;
