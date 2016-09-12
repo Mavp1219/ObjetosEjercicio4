@@ -19,7 +19,6 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
-        txtlongitud.setText("8");
     }
 
     /**
@@ -173,8 +172,7 @@ public class principal extends javax.swing.JFrame {
     private void cmdlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdlimpiarActionPerformed
         txtlongitud.setEditable(true);
         txtcontraseña.setText("");
-        txtlongitud.setText("8");
-        txtlongitud.selectAll();
+        txtlongitud.setText("");
         txtlongitud.requestFocusInWindow();
         txtmostrar.setText("");
         txtseguridad.setText("");
